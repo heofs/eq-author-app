@@ -504,6 +504,7 @@ enum RoutingCondition2 {
   AnyOf
   NotAnyOf
   NotAllOf
+  Unanswered
 }
 
 type BinaryExpression2 {

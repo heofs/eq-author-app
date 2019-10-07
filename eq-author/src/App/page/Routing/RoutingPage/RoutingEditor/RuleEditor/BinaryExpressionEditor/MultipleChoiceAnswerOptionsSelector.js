@@ -15,6 +15,12 @@ import Popover from "./CheckboxSelectorPopup";
 import CheckboxOptionPicker from "./CheckboxOptionPicker";
 import CheckboxChip from "./CheckboxChip";
 
+const answerConditions = {
+  UNANSWERED: "Unanswered",
+  ALLOF: "All of",
+  ANYOF: "Any of",
+};
+
 const MultipleChoiceAnswerOptions = styled.div`
   align-items: center;
   padding: 1em 0;
@@ -134,31 +140,36 @@ class MultipleChoiceAnswerOptionsSelector extends React.Component {
           defaultValue={expression.condition}
           data-test="condition-dropdown"
         >
-          <option value="AllOf">All of</option>
-          <option value="AnyOf">Any of</option>
+          <option value="AllOf">{answerConditions.ALLOF}</option>
+          <option value="AnyOf">{answerConditions.ANYOF}</option>
+          <option value="Unanswered">{answerConditions.UNANSWERED}</option>
         </ConditionSelect>
-        <TransitionGroup component={SelectedOptions}>
-          {get(expression, "right.options", []).map(option => (
-            <CheckboxChipTransition key={option.id}>
-              <CheckboxChip
-                key={option.id}
-                id={option.id}
-                onRemove={this.handleCheckboxUnselect}
-              >
-                {option.label}
-              </CheckboxChip>
-            </CheckboxChipTransition>
-          ))}
-        </TransitionGroup>
-        <ChooseButton
-          onClick={() => {
-            this.setState({
-              showPopup: true,
-            });
-          }}
-        >
-          CHOOSE
-        </ChooseButton>
+        {expression.condition !== answerConditions.UNANSWERED && (
+          <>
+            <TransitionGroup component={SelectedOptions}>
+              {get(expression, "right.options", []).map(option => (
+                <CheckboxChipTransition key={option.id}>
+                  <CheckboxChip
+                    key={option.id}
+                    id={option.id}
+                    onRemove={this.handleCheckboxUnselect}
+                  >
+                    {option.label}
+                  </CheckboxChip>
+                </CheckboxChipTransition>
+              ))}
+            </TransitionGroup>
+            <ChooseButton
+              onClick={() => {
+                this.setState({
+                  showPopup: true,
+                });
+              }}
+            >
+              CHOOSE
+            </ChooseButton>
+          </>
+        )}
         {this.state.showPopup && (
           <Popover isOpen onClose={this.handlePickerClose}>
             <CheckboxOptionPicker
