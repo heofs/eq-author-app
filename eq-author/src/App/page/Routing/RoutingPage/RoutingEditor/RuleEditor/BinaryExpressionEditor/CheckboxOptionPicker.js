@@ -100,16 +100,14 @@ const CheckboxOptionPicker = ({ expression, onClose, onRightChange }) => {
     <>
       <Title>Choose options</Title>
       <Scroll>
-        {answer.options.map(option => {
-          return (
-            <Option
-              key={option.id}
-              option={option}
-              selected={isSelected(checkedOptions, option)}
-              onChange={handleTick}
-            />
-          );
-        })}
+        {answer.options.map(option => (
+          <Option
+            key={option.id}
+            option={option}
+            selected={isSelected(checkedOptions, option)}
+            onChange={handleTick}
+          />
+        ))}
         {answer.mutuallyExclusiveOption && (
           <MutuallyExclusiveOption>
             <Option
