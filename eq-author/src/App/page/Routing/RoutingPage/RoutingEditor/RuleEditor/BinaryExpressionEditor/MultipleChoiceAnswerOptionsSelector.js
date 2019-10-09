@@ -140,9 +140,9 @@ class MultipleChoiceAnswerOptionsSelector extends React.Component {
           defaultValue={expression.condition}
           data-test="condition-dropdown"
         >
-          <option value={answerConditions.ANYOF}>"Any of"</option>
-          <option value={answerConditions.ALLOF}>"All of"</option>
-          <option value={answerConditions.UNANSWERED}>"Unanswered"</option>
+          <option value={answerConditions.ANYOF}>Any of</option>
+          <option value={answerConditions.ALLOF}>All of</option>
+          <option value={answerConditions.UNANSWERED}>Unanswered</option>
         </ConditionSelect>
         {expression.condition !== answerConditions.UNANSWERED && (
           <>
