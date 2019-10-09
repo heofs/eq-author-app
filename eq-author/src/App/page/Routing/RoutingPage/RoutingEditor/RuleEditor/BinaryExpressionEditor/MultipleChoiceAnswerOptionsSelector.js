@@ -17,8 +17,8 @@ import CheckboxChip from "./CheckboxChip";
 
 const answerConditions = {
   UNANSWERED: "Unanswered",
-  ALLOF: "All of",
-  ANYOF: "Any of",
+  ALLOF: "AllOf",
+  ANYOF: "AnyOf",
 };
 
 const MultipleChoiceAnswerOptions = styled.div`
@@ -140,9 +140,9 @@ class MultipleChoiceAnswerOptionsSelector extends React.Component {
           defaultValue={expression.condition}
           data-test="condition-dropdown"
         >
-          <option value="AllOf">{answerConditions.ALLOF}</option>
-          <option value="AnyOf">{answerConditions.ANYOF}</option>
-          <option value="Unanswered">{answerConditions.UNANSWERED}</option>
+          <option value={answerConditions.ANYOF}>"Any of"</option>
+          <option value={answerConditions.ALLOF}>"All of"</option>
+          <option value={answerConditions.UNANSWERED}>"Unanswered"</option>
         </ConditionSelect>
         {expression.condition !== answerConditions.UNANSWERED && (
           <>

@@ -153,11 +153,15 @@ describe("Checkbox routing", () => {
   });
 
   it("does not render 'choose' button or selected options when match condition is unanswered", () => {
-    props.expression.condition = "Unanswered";
-    const { queryByText } = renderRouting();
+    let { queryByText } = renderRouting();
 
-    expect(queryByText("CHOOSE")).toBeFalsy();
-    expect(queryByText("Option 1")).toBeFalsy();
-    expect(queryByText("Option 2")).toBeFalsy();
+    // Ensure the Choose button is there before we test for the inverse
+    expect(queryByText("CHOOSE")).toBeTruthy();
+
+    props.expression.condition = "Unanswered";
+
+    expect(queryByText("CHOOSE").updateBinaryExpression).toBeFalsy();
+    expect(queryByText("Option 1").updateBinaryExpression).toBeFalsy();
+    expect(queryByText("Option 2").updateBinaryExpression).toBeFalsy();
   });
 });

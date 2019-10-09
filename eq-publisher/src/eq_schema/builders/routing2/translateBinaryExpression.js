@@ -29,7 +29,7 @@ const buildRadioAnswerBinaryExpression = ({ left, right }) => {
 };
 
 const buildCheckboxAnswerBinaryExpression = ({ left, right, condition }) => {
-  let returnVal = {
+  const returnVal = {
     id: `answer${left.id}`,
     condition: conditionConverter(condition),
   };
