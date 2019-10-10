@@ -25,6 +25,7 @@ const MultipleChoiceAnswerOptions = styled.div`
   align-items: center;
   padding: 1em 0;
   display: inline-flex;
+  flex-flow: row wrap;
 `;
 
 const Label = styled.label`
