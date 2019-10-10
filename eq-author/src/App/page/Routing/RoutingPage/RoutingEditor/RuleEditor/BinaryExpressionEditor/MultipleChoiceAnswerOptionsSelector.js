@@ -24,6 +24,7 @@ const answerConditions = {
 const MultipleChoiceAnswerOptions = styled.div`
   align-items: center;
   padding: 1em 0;
+  display: inline-flex;
 `;
 
 const Label = styled.label`
