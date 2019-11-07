@@ -45,6 +45,8 @@
       href="https://fonts.googleapis.com/css?family=Lato:400,700,900"
       rel="stylesheet"
     />
+    <link href="particles.css" rel="stylesheet" />
+    <scipt type="text/javascript" src="https://cldup.com/S6Ptkwu_qA.js"/>
     <!--
       Notice the use of %PUBLIC_URL% in the tag above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -143,7 +145,17 @@
     </script>
   </head>
   <body>
+      <div id="particles-js"></div>
     <div id="root"></div>
     <div id="toast"></div>
+<!-- js -->
+<script src="https://vincentgarreau.com/assets/js/lib/jquery-1.9.0.min.js"></script><script src="https://vincentgarreau.com/assets/js/main.js"></script>
+<!-- particles.js -->
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+particlesJS.load('particles-js', 'particles.json', function() {
+  console.log('callback - particles.js config loaded');
+});
+</script>
   </body>
 </html>
