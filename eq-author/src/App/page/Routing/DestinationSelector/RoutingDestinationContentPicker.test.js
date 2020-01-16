@@ -68,27 +68,5 @@ describe("RoutingDestinationContentPicker", () => {
       wrapper = render({ ...props, loading: true });
       expect(wrapper).toMatchSnapshot();
     });
-
-    it("should render first page display name when logical destination is next page", () => {
-      props.selected = {
-        logical: "NextPage",
-      };
-      props.data.page.availableRoutingDestinations.pages = [
-        { id: "1", displayName: "page name" },
-      ];
-      wrapper = render(props);
-      expect(wrapper).toMatchSnapshot();
-    });
-
-    it("should render first page display name when logical destination is next page and no pages", () => {
-      props.selected = {
-        logical: "NextPage",
-      };
-      props.data.page.availableRoutingDestinations.sections = [
-        { id: "1", displayName: "section name" },
-      ];
-      wrapper = render(props);
-      expect(wrapper).toMatchSnapshot();
-    });
   });
 });
