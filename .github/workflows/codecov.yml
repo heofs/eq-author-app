@@ -3,7 +3,7 @@ name: Codecov workflow
 on: [push, pull_request]
 
 jobs:
-  run:
+  publisher-coverage:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
@@ -13,16 +13,15 @@ jobs:
           node-version: '10.x'
       - name: Generate coverage report
         run: |
-          cd eq-author
-          yarn install
-          yarn test -- --coverage
+          cd eq-publisher
+          yarn install --frozen-lockfile
+          yarn test --coverage
         env:
           CI: true
       - name: Coverage
         uses: codecov/codecov-action@v1.0.5
         with:
           token: ${{secrets.CODECOV_TOKEN}}
-          file: eq-author/coverage/coverage-final.json
-          flags: unittests
-          name: codecov-umbrella
-          yml: .codecov.yml
+          file: eq-publisher/coverage/coverage-final.json
+          flags: publisher
+          name: eq-publisher
