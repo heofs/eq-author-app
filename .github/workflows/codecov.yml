@@ -18,13 +18,14 @@ jobs:
           yarn test --coverage
         env:
           CI: true
-      - name: Coverage
+      - name: Upload coverage
         uses: codecov/codecov-action@v1.0.5
         with:
           token: ${{secrets.CODECOV_TOKEN}}
           file: eq-author/coverage/coverage-final.json
-          flags: author
-          name: eq-author
+          flags: unittests
+          yml: .codecov.yml
+
   publisher-coverage:
     runs-on: ubuntu-latest
     steps:
@@ -40,10 +41,14 @@ jobs:
           yarn test --coverage
         env:
           CI: true
-      - name: Coverage
+      - name: Upload coverage
         uses: codecov/codecov-action@v1.0.5
         with:
           token: ${{secrets.CODECOV_TOKEN}}
           file: eq-publisher/coverage/coverage-final.json
-          flags: publisher
-          name: eq-publisher
+          flags: unittests
+          yml: .codecov.yml
+             
+          
+          
+
