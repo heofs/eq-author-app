@@ -14,8 +14,8 @@ jobs:
       - name: Generate coverage report
         run: |
           cd eq-author
-          npm ci
-          npm test -- --coverage
+          yarn install
+          yarn test -- --coverage
         env:
           CI: true
       - name: Coverage
