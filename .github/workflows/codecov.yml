@@ -1,0 +1,28 @@
+name: Codecov workflow
+
+on: [push, pull_request]
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+      - name: Generate coverage report
+        run: |
+          cd eq-author
+          npm ci
+          npm test -- --coverage
+        env:
+          CI: true
+      - name: Coverage
+        uses: codecov/codecov-action@v1.0.5
+        with:
+          token: ${{secrets.CODECOV_TOKEN}}
+          file: eq-author/coverage/coverage-final.json
+          flags: unittests
+          name: codecov-umbrella
+          yml: .codecov.yml
